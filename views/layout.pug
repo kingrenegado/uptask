@@ -5,7 +5,7 @@ html(lang="en")
         meta(name="viewpo-rt", content="width=device-width, initial-scale=1.0")
         link(rel="stylesheet", href="/css/normalize.css")
         link(rel="stylesheet", href="/css/app.css")
-        title Document
+        title #{nombrePagina}
     body
         header.barra
             h1 Uptask - Administrador de Proyectos
@@ -14,7 +14,7 @@ html(lang="en")
         main.contenedor
             aside.contenedor-proyectos
                 .panel.crear-proyecto
-                    a(href="#" class="boton") Nuevo Proyecto 
+                    a(href="/nuevoProyecto" class="boton") Nuevo Proyecto 
                         span +
                 .panel.lista-proyectos
                     h2 Proyectos
@@ -25,3 +25,4 @@ html(lang="en")
                             a(href="#") Diseño de Nuevo Blog
                         li
                             a(href="#") Diseño de Logotipo Básico
+            block contenido
