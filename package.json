@@ -9,7 +9,7 @@
     "dev": "nodemon index.js"
   },
   "author": "Enrique Lara Guerrero",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "express": "^4.17.1",
     "mysql2": "^2.2.5",
@@ -18,5 +18,13 @@
   },
   "devDependencies": {
     "nodemon": "^2.0.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kingrenegado/uptask.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kingrenegado/uptask/issues"
+  },
+  "homepage": "https://github.com/kingrenegado/uptask#readme"
 }
