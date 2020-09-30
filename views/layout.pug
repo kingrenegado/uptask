@@ -19,10 +19,8 @@ html(lang="en")
                 .panel.lista-proyectos
                     h2 Proyectos
                     ul#proyectos.proyectos
-                        li
-                            a(href="#") Diseño de Tienda Virtual
-                        li
-                            a(href="#") Diseño de Nuevo Blog
-                        li
-                            a(href="#") Diseño de Logotipo Básico
+                        if(proyectos.length)
+                            each proyecto in proyectos
+                                li
+                                    a(href="#")= proyecto.nombre
             block contenido
