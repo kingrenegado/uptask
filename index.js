@@ -8,6 +8,7 @@ const db = require('./config/db');
 
 //importar modelo
 require('./models/Proyectos');
+require('./models/Tareas');
 
 db.sync()
     .then(() => console.log('Conectado a BD'))

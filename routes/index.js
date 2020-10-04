@@ -23,5 +23,12 @@ module.exports = function(){
     //actualizar proyecto
     router.get('/proyecto/editar/:id' , proyectosController.formularioEditar);
 
+    router.post('/nuevoProyecto/:id', 
+    body('nombre').not().isEmpty().trim().escape(),
+    proyectosController.actualizarProyecto);
+
+    //eliminar Proyectos
+    router.delete('/proyectos/:url', proyectosController.eliminarProyecto);
+
     return router;
 }

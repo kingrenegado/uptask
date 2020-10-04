@@ -9,9 +9,9 @@ block contenido
 
         //TODO LISTADO DE PENDIENTES
 
-        pre= vardump(proyecto)
+        //- pre= vardump(proyecto)
 
         //ACCIONES QUE SE PUEDEN REALIZAR
         .contenedor-acciones
             a(href=`/proyecto/editar/${proyecto.id}` class="boton") Editar Proyecto
-            button#eliminar-proyecto(type="button" class="boton eliminar") Eliminar Proyecto
+            button#eliminar-proyecto(data-proyecto-url=proyecto.url type="button" class="boton eliminar") Eliminar Proyecto
