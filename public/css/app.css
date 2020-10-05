@@ -235,6 +235,9 @@ body.index {
 .completo {
     color: #00B762;
 }
+.incompleto{
+    color: #F22929;
+}
 .alerta {
     padding: .5rem;
     text-align: center;

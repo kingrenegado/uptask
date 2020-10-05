@@ -1,5 +1,6 @@
 const Sequelize = require('sequelize');
 const db = require('../config/db');
+const Proyectos = require('./Proyectos');
 
 const Tareas = db.define('tareas', {
     id:{
@@ -8,12 +9,12 @@ const Tareas = db.define('tareas', {
         autoIncrement: true
     },
     tarea: {
-        type: Sequelize.String
+        type: Sequelize.STRING
     },
     estado:{
         type: Sequelize.INTEGER
     }
 });
-
+Tareas.belongsTo(Proyectos);
 
 module.exports = Tareas;
