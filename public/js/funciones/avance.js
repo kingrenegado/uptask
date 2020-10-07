@@ -1,3 +1,5 @@
+import Swal from 'sweetalert2';
+
 export const actualizarAvance= () => {
     //Seleccionar tareas existentes
     const tareas = document.querySelectorAll('li.tarea');
@@ -15,7 +17,11 @@ export const actualizarAvance= () => {
         porcentaje.style.width = avance+'%';
 
         if(avance === 100){
-            alert('Completaste el proyecto')
+            Swal.fire(
+                'Completaste el Proyecto',
+                'Felicidades, has terminado tus tareas',
+                'success'
+            )
         }
     }
 }
