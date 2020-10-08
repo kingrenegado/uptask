@@ -3,6 +3,8 @@ const routes = require('./routes');
 const path = require('path');
 const bodyparser = require('body-parser');
 const helpers = require('./helpers');
+const flash = require('connect-flash');
+
 //conexion a bd
 const db = require('./config/db');
 
@@ -15,8 +17,14 @@ db.sync()
     .then(() => console.log('Conectado a BD'))
     .catch(error => console.log(error));
 
+
+
 //crear una app de express
 const app = express();
+
+//habilitar bodyparser
+app.use(bodyparser.urlencoded({extended:true}));
+
 
 //donde cargar archivos estaticos
 app.use(express.static('public'));
@@ -27,6 +35,8 @@ app.set('view engine', 'pug');
 //añadir carpeta de vistas
 app.set('views' , path.join(__dirname, './views'));
 
+//agregar mensajes flash
+app.use(flash());
 
 //Pasar Vardump a la app
 app.use((req,res,next) => {
@@ -42,8 +52,6 @@ app.use((req,res,next) => {
 })
 
 
-//habilitar bodyparser
-app.use(bodyparser.urlencoded({extended:true}));
 
 app.use('/', routes());
 
