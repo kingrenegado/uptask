@@ -4,6 +4,8 @@ const path = require('path');
 const bodyparser = require('body-parser');
 const helpers = require('./helpers');
 const flash = require('connect-flash');
+const sesion = require('express-session');
+const cookieParser = require('cookie-parser');
 
 //conexion a bd
 const db = require('./config/db');
@@ -38,11 +40,21 @@ app.set('views' , path.join(__dirname, './views'));
 //agregar mensajes flash
 app.use(flash());
 
+//sesiones que permiten navegar entre paginas sin tener que autenticarte
+app.use(sesion({
+    secret: 'supersecreto',
+    resave: false,
+    saveUnitialized: false
+}));
+
+app.use(cookieParser());
+
 //Pasar Vardump a la app
 app.use((req,res,next) => {
     const fecha = new Date();
     res.locals.year = fecha.getFullYear();
     res.locals.vardump = helpers.vardump;
+    res.locals.mensajes = req.flash();
     next();
 })
 

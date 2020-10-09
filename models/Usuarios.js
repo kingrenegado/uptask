@@ -14,15 +14,15 @@ const Usuarios = db.define('usuarios',{
         allowNull: false,
         validate: {
             isEmail: {
-                msg: 'Agrega un correo válido'
+                message: 'Agrega un correo válido'
             },
             notEmpty:{
-                msg:'El email no puede ir vacío'
+                message:'El email no puede ir vacío'
             }
         },
         unique:{
             args:true,
-            msg:'Usuario ya registrado'
+            message:'Usuario ya registrado'
         }
     },
     password:{
@@ -30,7 +30,7 @@ const Usuarios = db.define('usuarios',{
         allowNull: false,
         validate: {
             notEmpty:{
-                msg:'El password no puede ir vacío'
+                message:'El password no puede ir vacío'
             }
         }
     },
