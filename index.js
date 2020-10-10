@@ -6,6 +6,7 @@ const helpers = require('./helpers');
 const flash = require('connect-flash');
 const sesion = require('express-session');
 const cookieParser = require('cookie-parser');
+const passport = require('./config/passport');
 
 //conexion a bd
 const db = require('./config/db');
@@ -48,6 +49,10 @@ app.use(sesion({
 }));
 
 app.use(cookieParser());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
 
 //Pasar Vardump a la app
 app.use((req,res,next) => {
