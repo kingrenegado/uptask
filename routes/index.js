@@ -11,7 +11,7 @@ const usuariosController = require('../controllers/usuariosController');
 const authController = require('../controllers/authController');
 //rutas
 module.exports = function(){
-    router.get('/', proyectosController.proyectosHome);
+    router.get('/', authController.usuarioAutenticado ,proyectosController.proyectosHome);
     
     router.get('/nuevoProyecto', proyectosController.formularioProyecto)
     router.post('/nuevoProyecto', 
@@ -20,27 +20,27 @@ module.exports = function(){
 
 
     //Listar Proyecto 
-    router.get('/proyectos/:url', proyectosController.proyectoPorUrl);
+    router.get('/proyectos/:url', authController.usuarioAutenticado, proyectosController.proyectoPorUrl);
 
     //actualizar proyecto
-    router.get('/proyecto/editar/:id' , proyectosController.formularioEditar);
+    router.get('/proyecto/editar/:id' ,authController.usuarioAutenticado, proyectosController.formularioEditar);
 
     router.post('/nuevoProyecto/:id', 
     body('nombre').not().isEmpty().trim().escape(),
     proyectosController.actualizarProyecto);
 
     //eliminar Proyectos
-    router.delete('/proyectos/:url', proyectosController.eliminarProyecto);
+    router.delete('/proyectos/:url',authController.usuarioAutenticado, proyectosController.eliminarProyecto);
 
 
     //tareas
-    router.post('/proyectos/:url', tareasController.agregarTarea);
+    router.post('/proyectos/:url',authController.usuarioAutenticado, tareasController.agregarTarea);
 
     //Actualizar Tarea
-    router.patch('/tareas/:id', tareasController.cambiarEstadoTarea)
+    router.patch('/tareas/:id',authController.usuarioAutenticado, tareasController.cambiarEstadoTarea)
 
     //Eliminar Tarea
-    router.delete('/tareas/:id', tareasController.eliminarTarea);
+    router.delete('/tareas/:id',authController.usuarioAutenticado, tareasController.eliminarTarea);
 
 
     //Crear nueva cuenta
@@ -50,6 +50,16 @@ module.exports = function(){
     router.post('/crear-cuenta',usuariosController.crearCuenta);
 
     router.get('/iniciar-sesion', usuariosController.formIniciarSesion);
-    router.post('/iniciar-sesion', authController.autenticarUsuario);
+    router.post('/iniciar-sesion', authController.autenticarUsuario);;
+
+
+    //cerrar sesion
+
+    router.get('/cerrar-sesion', authController.cerrarsesion);
+
+    //reestablecer contraseña
+    router.get('/reestablecer', usuariosController.formRestablecerPassword);
+    router.post('/reestablecer', authController.enviarToken);
+    router.get('/reestablecer/:token',authController.resetPassword);
     return router;
 }

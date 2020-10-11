@@ -60,22 +60,12 @@ app.use((req,res,next) => {
     res.locals.year = fecha.getFullYear();
     res.locals.vardump = helpers.vardump;
     res.locals.mensajes = req.flash();
+    res.locals.usuario = {...req.user} || null;
     next();
 })
-
-app.use((req,res,next) => {
-    console.log('Yo soy middleware');
-    next();
-})
-
 
 
 app.use('/', routes());
-
-
-
-
-
 
 //Puerto
 const port = process.env.PORT || 5050;
