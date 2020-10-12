@@ -72,4 +72,7 @@ const port = process.env.PORT || 5050;
 
 app.listen(port, () => {
     console.log(`Escuchado en puerto ${port}`);
-})
+});
+
+
+require('./handlers/email');

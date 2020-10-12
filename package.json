@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index,js",
+    "start": "node index.js",
     "dev": "nodemon index.js",
     "watch": "webpack --w --mode development",
     "star": "concurrently \"npm run dev\" \"npm run watch \""
@@ -21,7 +21,10 @@
     "express": "^4.17.1",
     "express-session": "^1.17.1",
     "express-validator": "^6.6.1",
+    "html-to-text": "^5.1.1",
+    "juice": "^7.0.0",
     "mysql2": "^2.2.5",
+    "nodemailer": "^6.4.13",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",
     "pug": "^3.0.0",
